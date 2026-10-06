@@ -1,13 +1,13 @@
 {
-  "name": "linear-regression-solver-with-table",
+  "name": "slope-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Slope solver with table",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "NotTacos",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
