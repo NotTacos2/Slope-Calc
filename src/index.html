@@ -1,0 +1,68 @@
+<body>
+  <title>Slope Calc</title>
+  <table id="table" border="1">
+    <tr>
+      <th>X values</th>
+      <th>Y values</th>
+    </tr>
+    <tr>
+      <td contenteditable="true">X1 value</td>
+      <td contenteditable="true">X2 value</td>
+
+    </tr>
+    <tr>
+      <td contenteditable="true">Y1 value</td>
+      <td contenteditable="true">Y2 value</td>
+    </tr>
+  </table>
+  <button id="button">Calculate</button>
+  <h1 id="realanswer">y = mx + b</h1>
+  <style>
+    body { background: rgb(0, 203, 249); color: rgb(0, 30, 255); font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; display:flex; flex-direction:column; align-items:center;  }
+    .table { margin:auto; text-align:center; }
+    button { background: rgb(0, 30, 255); text-align:center; font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; }
+  </style>
+  <script>
+  document.getElementById("button").onclick = () => { // apparently build.mjs doesn't build functions so I had to do it like this
+    const data = [];
+    for (const row of table.rows) {
+      const x = Number(row.cells[0].textContent);
+      const y = Number(row.cells[1].textContent);
+
+      if (!isNaN(x) && !isNaN(y)) {
+        data.push([x, y]);
+        document.getElementById("button").textContent = "Calculate"
+      } else {
+        document.getElementById("button").textContent = "Please put in real numbers."
+      }
+
+      if (data.length < 2) {
+        document.getElementById("button").textContent = "Please put in real numbers."
+      } else {
+        document.getElementById("button").textContent = "Calculate"
+      }
+
+      const rowOne = table.rows[1];
+      const rowTwo = table.rows[2];
+
+      const x1 = Number(rowOne.cells[0].textContent);
+      const y1 = Number(rowOne.cells[1].textContent);
+
+      const x2 = Number(rowTwo.cells[0].textContent);
+      const y2 = Number(rowTwo.cells[1].textContent);
+
+      const slope = (y2 - y1) / (x2 - x1);
+      const yi = y1 - slope * x1;
+
+      if (isNaN(x) || isNaN(y)) { // I hate javascript
+        document.getElementById("realanswer").textContent = "Invalid"
+      } else if (isNaN(slope) || isNaN(yi)) {
+        document.getElementById("realanswer").textContent = "Invalid, might be undefined"
+      } else {
+        document.getElementById("realanswer").textContent = `y = ${slope}x + ${yi}`
+      }
+
+    }
+  }
+  </script>
+</body>
