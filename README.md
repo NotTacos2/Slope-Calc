@@ -1,0 +1,2 @@
+# Slope-Calc
+but shrinked
