@@ -58,6 +58,8 @@
         document.getElementById("realanswer").textContent = "Invalid"
       } else if (isNaN(slope) || isNaN(yi)) {
         document.getElementById("realanswer").textContent = "Invalid, might be undefined"
+      } else if (!isFinite(slope) || !isFinite(yi)) {
+        document.getElementById("realanswer").textContent = "Invalid, might be infinity"
       } else {
         document.getElementById("realanswer").textContent = `y = ${slope}x + ${yi}`
       }
